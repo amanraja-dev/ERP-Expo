@@ -1,207 +1,66 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
-import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet } from "react-native";
+import React from "react";
+import { TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { black, white, darkgrey } from "../assets/colors/colors";
 
 const ProfileItems = ({ navigation }) => {
+  const profileOptions = [
+    { iconName: "account-details-outline", title: "Personal Detail", navigateTo: "PersonalDetails" },
+    { iconName: "phone-in-talk-outline", title: "Contact Detail", navigateTo: "ContactDetails" },
+    { iconName: "map-marker-outline", title: "Postal Detail", navigateTo: "PostalDetail" },
+    { iconName: "account-convert-outline", title: "Update Profile Photo", navigateTo: "ProfilePhoto" },
+    { iconName: "handshake-outline", title: "Contact Us", navigateTo: "ContactUs" },
+    { iconName: "information-outline", title: "About Us", navigateTo: "AboutUs" },
+    { iconName: "shield-account-variant-outline", title: "Privacy Policy", navigateTo: "PrivacyPolicy" },
+    { iconName: "face-agent", title: "Support", navigateTo: "Support" },
+    { iconName: "lock-reset", title: "Change Password", navigateTo: "ChangePass" },
+    { iconName: "share", title: "Share App", navigateTo: "ShareApp" },
+    { iconName: "star", title: "Rate App", navigateTo: "RateApp" },
+    { iconName: "logout", title: "Logout", navigateTo: "Login" },
+  ];
+
+  const renderProfileItem = ({ iconName, title, navigateTo }) => (
+    <TouchableOpacity
+      key={title}
+      style={styles.ProfileItem}
+      onPress={() => navigation.navigate(navigateTo)}
+    >
+      <Icon name={iconName} size={30} color={darkgrey} />
+      <Text style={styles.itemText}>{title}</Text>
+      <Icon name="chevron-right" size={30} color={darkgrey} />
+    </TouchableOpacity>
+  );
+
   return (
     <View style={styles.container}>
-
-      <View style={styles.ProfileItem}>
-        <Image source={require('../assets/details.png')} style={styles.Icon} />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Personal Detail</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('PersonalDetails')}>
-          <Image source={require('../assets/next.png')} style={styles.nextIcon} />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/contact.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Contact Detail</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('ContactDetails')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/home-address.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Postal Detail</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('PostalDetail')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/profile-photo.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Update Profile Photo</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('ProfilePhoto')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/contact-us.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Contact Us</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/about-us.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>About Us</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('AboutUs')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/privacy-policy.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Privacy Policy</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/support.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Support</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Support')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/reset-password.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Change Password</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('ChangePass')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/share.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Share App</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('ShareApp')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/rating.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Rate App</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('RateApp')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.ProfileItem}>
-        <Image
-          source={require('../assets/logout.png')}
-          style={styles.Icon}
-        />
-        <Text style={{ paddingLeft: 20, fontWeight: '500' }}>Logout</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Image
-            source={require('../assets/next.png')}
-            style={styles.nextIcon}
-          />
-        </TouchableOpacity>
-      </View>
+      {profileOptions.map(renderProfileItem)}
     </View>
+  );
+};
 
-
-  )
-}
+export default ProfileItems;
 
 const styles = StyleSheet.create({
-
   container: {
-    alignItems: 'center'
+    alignItems: "center",
+    width: "100%",
   },
-
   ProfileItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 10,
     marginVertical: 5,
-    backgroundColor: 'white',
-    width: '90%',
-    borderRadius: 10,
-    borderWidth: 0,
+    backgroundColor: white,
+    borderRadius: 5,
     justifyContent: "space-between",
-
-    elevation: 20,
-    shadowColor: 'black',
+    width: "90%",
+    elevation: 2,
+    shadowColor: black,
   },
-
-  Icon: {
-    width: 30,
-    height: 30,
+  itemText: {
+    paddingLeft: 20,
+    fontWeight: "500",
+    flex: 1,
   },
-
-  nextIcon: {
-    width: 17,
-    height: 17,
-  },
-})
-export default ProfileItems
+});
